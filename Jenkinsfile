@@ -9,11 +9,16 @@ def printParams() {
 node {
     stage('Build') {
       echo "building..."
+      scm
+
+      sh "mkdir -p output"
 
       echo "  display environment"
-      sh 'env > env.txt'
-      sh 'cat env.txt'
-}
+      sh 'env > output/env.txt'
+      sh 'cat output/env.txt'
+
+      archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'              
+    }
 
     stage('Test') {
       echo "testing..."
