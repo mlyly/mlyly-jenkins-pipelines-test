@@ -1,10 +1,19 @@
 #!groovy
 
+@NonCPS
+def printParams() {
+  env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+}
+printParams()
+
 node {
     stage('Build') {
       echo "building..."
-      echo env
-    }
+
+      echo "  display environment"
+      sh 'env > env.txt'
+      sh 'cat env.txt'
+}
 
     stage('Test') {
       echo "testing..."
