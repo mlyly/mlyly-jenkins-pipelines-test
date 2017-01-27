@@ -10,6 +10,6 @@ node {
     stage('Deploy') {
     }
 
-    stage('Deploy') {
+    stage('Integration Test') {
     }
 }
