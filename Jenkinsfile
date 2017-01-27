@@ -3,6 +3,7 @@
 node {
     stage('Build') {
       echo "building..."
+      echo env
     }
 
     stage('Test') {
